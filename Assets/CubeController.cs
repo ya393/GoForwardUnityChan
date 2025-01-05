@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +6,11 @@ public class CubeController : MonoBehaviour
 {
 
 
-    //ƒLƒ…[ƒu‚ÌˆÚ“®‘¬“x
+    //ã‚­ãƒ¥ãƒ¼ãƒ–ã®ç§»å‹•é€Ÿåº¦
     private float speed = -12;
 
 
-    //Á–ÅˆÊ’u
+    //æ¶ˆæ»…ä½ç½®
     private float deadLine = -10;
 
 
@@ -23,11 +23,11 @@ public class CubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ƒLƒ…[ƒu‚ğˆÚ“®‚³‚¹‚é
+        //ã‚­ãƒ¥ãƒ¼ãƒ–ã‚’ç§»å‹•ã•ã›ã‚‹
         transform.Translate(this.speed * Time.deltaTime, 0, 0);
 
 
-        //‰æ–ÊŠO‚Éo‚½‚ç”jŠü‚·‚é
+        //ç”»é¢å¤–ã«å‡ºãŸã‚‰ç ´æ£„ã™ã‚‹
         if(transform.position.x < this.deadLine)
         {
             Destroy(gameObject);
@@ -35,7 +35,7 @@ public class CubeController : MonoBehaviour
     }
 
 
-    //’n–Ê‚©ƒLƒ…[ƒu“¯m‚ª‚Ô‚Â‚©‚Á‚½‚Æ‚«‚É‰¹‚ğ–Â‚ç‚·(’Ç‰Á)
+    //åœ°é¢ã‹ã‚­ãƒ¥ãƒ¼ãƒ–åŒå£«ãŒã¶ã¤ã‹ã£ãŸã¨ãã«éŸ³ã‚’é³´ã‚‰ã™(è¿½åŠ )
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "ground" || collision.gameObject.tag == "Cube")

@@ -1,38 +1,38 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeGenerator : MonoBehaviour
 {
-    //�L���[�u��Prefab
+    //キューブのPrefab
     public GameObject cubePrefab;
 
 
-    //���Ԍv���p�̕ϐ�
+    //時間計測用の変数
     private float delta = 0;
 
 
-    //�L���[�u�̐����Ԋu
+    //キューブの生成間隔
     private float span = 1.0f;
 
 
-    //�L���[�u�̐����ʒu:x���W
+    //キューブの生成位置:x座標
     private float genPosX = 12;
 
 
-    //�L���[�u�̐����ʒu�I�t�Z�b�g
+    //キューブの生成位置オフセット
     private float offsetY = 0.3f;
-    //�L���[�u�̏c�����̊Ԋu
+    //キューブの縦方向の間隔
     private float spaceY = 6.9f;
 
 
-    //�L���[�u�̐����ʒu�I�t�Z�b�g
+    //キューブの生成位置オフセット
     private float offsetX = 0.5f;
-    //�L���[�u�̏c�����̊Ԋu
+    //キューブの縦方向の間隔
     private float spaceX = 0.4f;
 
 
-    //�L���[�u�̐������̏��
+    //キューブの生成個数の上限
     private int maxBlockNum = 4;
 
 
@@ -48,22 +48,22 @@ public class CubeGenerator : MonoBehaviour
         this.delta += Time.deltaTime;
 
 
-        //span�b�ȏ�̎��Ԃ��o�߂������𒲂ׂ�
+        //span秒以上の時間が経過したかを調べる
         if (this.delta > this.span)
         {
             this.delta = 0;
-            //��������L���[�u���������_���Ɍ��߂�
+            //生成するキューブ数をランダムに決める
             int n = Random.Range(1, maxBlockNum + 1);
 
 
-            //�w�肵���������L���[�u�𐶐�����
+            //指定した数だけキューブを生成する
             for (int i = 0; i < n; i++)
             {
-                //�L���[�u�̐���
+                //キューブの生成
                 GameObject go = Instantiate(cubePrefab);
                 go.transform.position = new Vector2(this.genPosX, this.offsetY + i * this.spaceY);
             }
-            //���̃L���[�u�܂ł̐������Ԃ����߂�
+            //次のキューブまでの生成時間を決める
             this.span = this.offsetX + this.spaceX * n;
         }
     }

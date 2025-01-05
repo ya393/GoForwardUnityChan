@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,30 +9,30 @@ public class UIController : MonoBehaviour
 
 
 
-    //ƒQ[ƒ€ƒI[ƒo[ƒeƒLƒXƒg
+    //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ãƒ†ã‚­ã‚¹ãƒˆ
     private GameObject gameOverText;
 
 
-    //‘–s‹——£ƒeƒLƒXƒg
+    //èµ°è¡Œè·é›¢ãƒ†ã‚­ã‚¹ãƒˆ
     private GameObject runLengthText;
 
 
-    //‘–‚Á‚½‹——£
+    //èµ°ã£ãŸè·é›¢
     private float len = 0;
 
 
-    //‘–‚é‘¬“x
+    //èµ°ã‚‹é€Ÿåº¦
     private float speed = 5f;
 
 
-    //ƒQ[ƒ€ƒI[ƒo[‚Ì”»’è
+    //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã®åˆ¤å®š
     private bool isGameOver = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //ƒV[ƒ“ƒrƒ…[‚©‚çƒIƒuƒWƒFƒNƒg‚ÌÀ‘Ì‚ğŒŸõ‚·‚é
+        //ã‚·ãƒ¼ãƒ³ãƒ“ãƒ¥ãƒ¼ã‹ã‚‰ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å®Ÿä½“ã‚’æ¤œç´¢ã™ã‚‹
         this.gameOverText = GameObject.Find("GameOver");
         this.runLengthText = GameObject.Find("RunLength");
     }
@@ -42,22 +42,22 @@ public class UIController : MonoBehaviour
     {
         if (this.isGameOver == false)
         {
-            //‘–‚Á‚½‹——£‚ğXV‚·‚é
+            //èµ°ã£ãŸè·é›¢ã‚’æ›´æ–°ã™ã‚‹
             this.len += this.speed * Time.deltaTime;
 
 
-            //‘–‚Á‚½‹——£‚ğ•\¦‚·‚é
+            //èµ°ã£ãŸè·é›¢ã‚’è¡¨ç¤ºã™ã‚‹
             this.runLengthText.GetComponent<Text>().text = "Distance:  " + len.ToString("F2") + "m";
         }
 
 
-        //ƒQ[ƒ€ƒI[ƒo[‚É‚È‚Á‚½ê‡
+        //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã«ãªã£ãŸå ´åˆ
         if (this.isGameOver == true)
         {
-            //ƒNƒŠƒbƒN‚³‚ê‚½‚çƒV[ƒ“‚ğƒ[ƒh‚·‚é
+            //ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã‚‰ã‚·ãƒ¼ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
             if (Input.GetMouseButtonDown(0))
             {
-                //SampleScene‚ğ“Ç‚İ‚Ş
+                //SampleSceneã‚’èª­ã¿è¾¼ã‚€
                 SceneManager.LoadScene("SampleScene");
             }
         }
@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour
 
     public void GameOver()
     {
-        //ƒQ[ƒ€ƒI[ƒo[‚É‚È‚Á‚½‚Æ‚«‚ÉA‰æ–Êã‚ÉƒQ[ƒ€ƒI[ƒo[‚ğ•\¦‚·‚é
+        //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã«ãªã£ãŸã¨ãã«ã€ç”»é¢ä¸Šã«ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
         this.gameOverText.GetComponent<Text>().text = "Game Over";
         this.isGameOver = true;
     }

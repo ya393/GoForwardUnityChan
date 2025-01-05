@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +7,11 @@ public class BackgroundController : MonoBehaviour
 
 
 
-    //ƒXƒNƒ[ƒ‹‘¬“x
+    //ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦
     private float scrollSpeed = -1;
-    //”wŒiI—¹ˆÊ’u
+    //èƒŒæ™¯çµ‚äº†ä½ç½®
     private float deadLine = -16;
-    //”wŒiŠJnˆÊ’u
+    //èƒŒæ™¯é–‹å§‹ä½ç½®
     private float startLine = 15.8f;
 
 
@@ -24,12 +24,12 @@ public class BackgroundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //”wŒi‚ğˆÚ“®‚·‚é
+        //èƒŒæ™¯ã‚’ç§»å‹•ã™ã‚‹
         transform.Translate(this.scrollSpeed * Time.deltaTime, 0, 0);
 
 
 
-        //‰æ–ÊŠO‚Éo‚½‚çA‰æ–Ê‰E’[‚ÉˆÚ“®‚·‚é
+        //ç”»é¢å¤–ã«å‡ºãŸã‚‰ã€ç”»é¢å³ç«¯ã«ç§»å‹•ã™ã‚‹
         if (transform.position.x < this.deadLine)
         {
             transform.position = new Vector2(this.startLine, 0);

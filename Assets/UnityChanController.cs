@@ -1,67 +1,67 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UnityChanController : MonoBehaviour
 {
-    //ƒAƒjƒ[ƒVƒ‡ƒ“‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ“ü‚ê‚é
+    //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å…¥ã‚Œã‚‹
     Animator animator;
 
 
-    //Unity‚¿‚á‚ñ‚ğˆÚ“®‚³‚¹‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ“ü‚ê‚é
+    //Unityã¡ã‚ƒã‚“ã‚’ç§»å‹•ã•ã›ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å…¥ã‚Œã‚‹
     Rigidbody2D rigid2D;
 
 
-    //’n–Ê‚ÌˆÊ’u
+    //åœ°é¢ã®ä½ç½®
     private float groundLevel = -3.0f;
 
 
-    //ƒWƒƒƒ“ƒv‚Ì‘¬“x‚ÌŒ¸Š
+    //ã‚¸ãƒ£ãƒ³ãƒ—ã®é€Ÿåº¦ã®æ¸›è¡°
     private float dump = 0.8f;
 
 
-    //ƒWƒƒƒ“ƒv‚Ì‘¬“x
+    //ã‚¸ãƒ£ãƒ³ãƒ—ã®é€Ÿåº¦
     float jumpVelocity = 20;
 
 
-    //ƒQ[ƒ€ƒI[ƒo[‚É‚È‚éˆÊ’u
+    //ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã«ãªã‚‹ä½ç½®
     private float deadLine = -9;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //ƒAƒjƒ[ƒ^‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        //ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚¿ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         this.animator = GetComponent<Animator>();
-        //Rigidbody2D‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        //Rigidbody2Dã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //‘–‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ğÄ¶‚·‚é‚½‚ß‚ÉAAnimator‚Ìƒpƒ‰ƒ[ƒ^‚ğ’²ß‚·‚é
+        //èµ°ã‚‹ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å†ç”Ÿã™ã‚‹ãŸã‚ã«ã€Animatorã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’èª¿ç¯€ã™ã‚‹
         this.animator.SetFloat("Horizontal", 1);
 
 
-        //’…’n‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚é
+        //ç€åœ°ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹
         bool isGround = (transform.position.y > this.groundLevel) ? false : true;
         this.animator.SetBool("isGround", isGround);
 
 
-        //ƒWƒƒƒ“ƒvó‘Ô‚Ì‚Æ‚«‚É‚Íƒ{ƒŠƒ…[ƒ€‚ğ0‚É‚·‚é
+        //ã‚¸ãƒ£ãƒ³ãƒ—çŠ¶æ…‹ã®ã¨ãã«ã¯ãƒœãƒªãƒ¥ãƒ¼ãƒ ã‚’0ã«ã™ã‚‹
         GetComponent<AudioSource>().volume = (isGround) ? 1 : 0;
 
 
-        //’…’nó‘Ô‚ÅƒNƒŠƒbƒN‚³‚ê‚½ê‡
+        //ç€åœ°çŠ¶æ…‹ã§ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸå ´åˆ
         if (Input.GetMouseButtonDown(0) && isGround)
         {
-            //ã•ûŒü‚Ì—Í‚ğ‚©‚¯‚é
+            //ä¸Šæ–¹å‘ã®åŠ›ã‚’ã‹ã‘ã‚‹
             this.rigid2D.velocity = new Vector2(0, this.jumpVelocity);
         }
 
 
-        //ƒNƒŠƒbƒN‚ğ‚â‚ß‚½‚çã•ûŒü‚Ö‚Ì‘¬“x‚ğŒ¸‘¬‚·‚é
+        //ã‚¯ãƒªãƒƒã‚¯ã‚’ã‚„ã‚ãŸã‚‰ä¸Šæ–¹å‘ã¸ã®é€Ÿåº¦ã‚’æ¸›é€Ÿã™ã‚‹
         if (Input.GetMouseButton(0) == false)
         {
             if (this.rigid2D.velocity.y > 0)
@@ -71,14 +71,14 @@ public class UnityChanController : MonoBehaviour
         }
 
 
-        //ƒfƒbƒhƒ‰ƒCƒ“‚ğ’´‚¦‚½ê‡ƒQ[ƒ€ƒI[ƒo[‚É‚·‚é
+        //ãƒ‡ãƒƒãƒ‰ãƒ©ã‚¤ãƒ³ã‚’è¶…ãˆãŸå ´åˆã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼ã«ã™ã‚‹
         if (transform.position.x < this.deadLine)
         {
-            //UIController‚ÌGameOverŠÖ”‚ğŒÄ‚Ño‚µ‚Ä‰æ–Êã‚ÉuGameOverv‚Æ•\¦‚·‚é
+            //UIControllerã®GameOveré–¢æ•°ã‚’å‘¼ã³å‡ºã—ã¦ç”»é¢ä¸Šã«ã€ŒGameOverã€ã¨è¡¨ç¤ºã™ã‚‹
             GameObject.Find("Canvas").GetComponent<UIController>().GameOver();
 
 
-            //ƒ†ƒjƒeƒB‚¿‚á‚ñ‚ğ”jŠü‚·‚é
+            //ãƒ¦ãƒ‹ãƒ†ã‚£ã¡ã‚ƒã‚“ã‚’ç ´æ£„ã™ã‚‹
             Destroy(gameObject);
         }
     }
